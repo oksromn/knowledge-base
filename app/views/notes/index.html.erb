@@ -1,0 +1,9 @@
+<h1>Мои записи</h1>
+
+<div class="row row-cards mt-4" id="notes">
+  <% @notes.each do |note| %>
+    <div class="col-6">
+      <%= render note %>
+    </div>
+  <% end %>
+</div>

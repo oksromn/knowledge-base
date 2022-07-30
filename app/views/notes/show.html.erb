@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between">
+  <h1>Запись</h1>
+
+  <ul class="list-inline mb-0">
+    <li class="list-inline-item">
+      <%= link_to "Изменить", edit_note_path(@note), class: "btn btn-link" %>
+    </li>
+
+    <li class="list-inline-item">
+      <%= button_to "Удалить эту запись", @note, method: :delete, class: "btn btn-outline-danger w-100" %>
+    </li>
+  </ul>
+</div>
+
+<div class="col-8 m-auto mt-4">
+  <%= render @note %>
+</div>

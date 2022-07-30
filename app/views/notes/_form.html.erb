@@ -1,0 +1,31 @@
+<%= form_with model: note, html: { class: "card mt-4" } do |form| %>
+  <div class="card-status-top bg-dark"></div>
+  <div class="card-body">
+    <% if note.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% note.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :title, "Название записи", class: "form-label" %>
+      <%= form.text_field :title, placeholder: "Введите название", class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :content, "Содержание", class: "form-label" %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="card-footer text-end">
+    <div class="d-flex justify-content-between">
+      <%= link_to "Назад", root_path, class: "btn btn-link" %>
+      <%= form.submit "Добавить", class: "btn btn-primary ms-auto" %>
+    </div>
+  </div>
+<% end %>

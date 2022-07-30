@@ -1,0 +1,12 @@
+<div class="card" id="<%= dom_id note %>">
+  <div class="card-header">
+    <h3 class="card-title">
+      <%= link_to note.title, note_path(note) %>
+    </h3>
+  </div>
+
+  <div class="card-status-start bg-dark"></div>
+  <div class="card-body">
+    <%= note.content %>
+  </div>
+</div>
