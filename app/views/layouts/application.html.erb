@@ -11,6 +11,15 @@
   </head>
 
   <body class="border-top-wide border-primary d-flex flex-column theme-light">
-    <%= yield %>
+    <div class="page">
+      <%= render partial: 'layouts/navbar' %>
+
+      <div class="page-wrapper">
+        <div class="page-body">
+          <%= yield %>
+        </div>
+        <%= render partial: 'layouts/footer' %>
+      </div>
+    </div>
   </body>
 </html>
