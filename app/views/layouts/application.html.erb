@@ -12,14 +12,25 @@
 
   <body class="border-top-wide border-primary d-flex flex-column theme-light">
     <div class="page">
-      <%= render partial: 'layouts/navbar' %>
 
-      <div class="page-wrapper">
-        <div class="page-body">
-          <%= yield %>
+      <% if user_signed_in? %>
+        <%= render partial: 'layouts/navbar' %>
+
+        <div class="page-wrapper">
+          <div class="page-body">
+            <div class="container-xl">
+              <div class="row">
+                <div class="col-12">
+                  <%= yield %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <%= render partial: 'layouts/footer' %>
         </div>
-        <%= render partial: 'layouts/footer' %>
-      </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </div>
   </body>
 </html>
