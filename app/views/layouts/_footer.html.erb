@@ -6,6 +6,9 @@
           <li class="list-inline-item">
             <%= link_to "Документация", "https://github.com/oksromn/knowledge-base", class: "link-secondary" %>
           </li>
+          <li class="list-inline-item">
+            <%= link_to "Выйти из аккаунта", destroy_user_session_path, data: { "turbo-method": :delete }, class: "link-secondary" %>
+          </li>
         </ul>
       </div>
 
