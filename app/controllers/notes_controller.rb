@@ -13,7 +13,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @note = current_user.notes.new
   end
 
   # GET /notes/:id/edit
@@ -22,7 +22,7 @@ class NotesController < ApplicationController
 
   # POST /notes
   def create
-    @note = Note.new(note_params)
+    @note = current_user.notes.new(note_params)
 
     respond_to do |format|
       if @note.save
