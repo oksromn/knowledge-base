@@ -4,7 +4,7 @@
       <%= image_tag 'logo.svg', size: 150, class: "navbar-brand navbar-brand-autodark" %>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "card card-md" }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { "data-turbo": false, class: "card card-md" }) do |f| %>
       <div class="card-body">
         <h2 class="card-title text-center mb-4">Войти в аккаунт</h2>
 
