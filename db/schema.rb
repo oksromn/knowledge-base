@@ -62,12 +62,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_204164) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
-    t.bigint "tag_id"
+  create_table "taggings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "tag_id"
     t.string "taggable_type"
-    t.bigint "taggable_id"
+    t.uuid "taggable_id"
     t.string "tagger_type"
-    t.bigint "tagger_id"
+    t.uuid "tagger_id"
     t.string "context", limit: 128
     t.datetime "created_at", precision: nil
     t.string "tenant", limit: 128
@@ -85,7 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_204164) do
     t.index ["tenant"], name: "index_taggings_on_tenant"
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
