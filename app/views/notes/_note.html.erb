@@ -13,7 +13,7 @@
   <div class="card-footer">
     <% note.tag_list.each do |tag| %>
       <%= link_to notes_path(tagged: tag) do %>
-        <span class="badge rounded-pill bg-primary">
+        <span class="badge rounded-pill bg-secondary">
           <%= tag %>
         </span>
       <% end %>
