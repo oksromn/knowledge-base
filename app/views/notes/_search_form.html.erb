@@ -1,0 +1,8 @@
+<%= form_with url: notes_path, method: :get do |form| %>
+  <div class="input-icon">
+    <span class="input-icon-addon">
+      <i class="bi bi-search"></i>
+    </span>
+    <%= form.text_field :tagged, placeholder: "Поиск по тегам", class: "form-control" %>
+  </div>
+<% end %>

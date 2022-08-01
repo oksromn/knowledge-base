@@ -5,6 +5,10 @@ class NotesController < ApplicationController
   # GET /notes
   def index
     @notes = current_user.notes
+
+    if params[:tagged].present?
+      @notes = @notes.tagged_with(params[:tagged])
+    end
   end
 
   # GET /notes/:id
