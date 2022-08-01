@@ -20,6 +20,11 @@
       <%= form.label :content, "Содержание", class: "form-label" %>
       <%= form.rich_text_area :content, class: "form-control" %>
     </div>
+
+    <div class="mb-3">
+      <%= form.label :tag_list, "Теги", class: "form-label" %>
+      <%= form.text_field :tag_list, value: note.tag_list.join(", "), class: "form-control" %>
+    </div>
   </div>
 
   <div class="card-footer text-end">

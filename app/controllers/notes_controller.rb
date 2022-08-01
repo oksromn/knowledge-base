@@ -5,6 +5,10 @@ class NotesController < ApplicationController
   # GET /notes
   def index
     @notes = current_user.notes
+
+    if params[:tagged].present?
+      @notes = @notes.tagged_with(params[:tagged])
+    end
   end
 
   # GET /notes/:id
@@ -62,6 +66,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :content)
+      params.require(:note).permit(:title, :content, :tag_list)
     end
 end
