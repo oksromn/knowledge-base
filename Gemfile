@@ -33,6 +33,9 @@ gem "jbuilder"
 # Flexible authentication solution for Rails based on Warden
 gem 'devise'
 
+# A tagging plugin for Rails applications
+gem 'acts-as-taggable-on', '~> 9.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
