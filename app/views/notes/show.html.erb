@@ -1,15 +1,21 @@
 <div class="d-flex justify-content-between">
-  <h1>Запись</h1>
+  <div class="actions-header">
+    <h1>Запись</h1>
 
-  <ul class="list-inline mb-0">
-    <li class="list-inline-item">
-      <%= link_to "Изменить", edit_note_path(@note), class: "btn btn-link text-dark" %>
-    </li>
+    <ul class="list-inline mb-0 ms-4">
+      <li class="list-inline-item">
+        <%= link_to edit_note_path(@note), { title: "Изменить запись", class: "text-dark" } do %>
+          <i class="bi bi-pen icon-sm"></i>
+        <% end %>
+      </li>
 
-    <li class="list-inline-item">
-      <%= button_to "Удалить эту запись", @note, method: :delete, class: "btn btn-outline-danger w-100" %>
-    </li>
-  </ul>
+      <li class="list-inline-item ms-3">
+        <%= button_to note_path(@note), { title: "Удалить запись", class: "btn-link text-dark" }, method: :delete do %>
+          <i class="bi bi-x-lg icon-sm"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="col-8 m-auto mt-4">

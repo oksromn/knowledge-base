@@ -13,7 +13,7 @@
           <%= content_tag :div, nil, class: "card-status-start bg-#{note.folder.color}" %>
 
           <%= content_tag :div, class: "ribbon ribbon-top bg-#{note.folder.color}" do %>
-            <%= link_to folder_path(note.folder), class: "text-decoration-none" do %>
+            <%= link_to folder_path(note.folder), { title: note.folder.name, class: "text-decoration-none" } do %>
               <%= content_tag :span, class: "avatar avatar-sm bg-#{note.folder.color}" do %>
                 <%= note.folder.name.first.capitalize %>
               <% end %>
