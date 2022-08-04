@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_165018) do
     t.string "name", default: "", null: false
     t.string "color", default: "indigo", null: false
     t.uuid "user_id", null: false
+    t.boolean "default", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"

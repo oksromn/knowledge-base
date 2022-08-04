@@ -4,6 +4,7 @@ class CreateFolders < ActiveRecord::Migration[7.0]
       t.string :name, null: false, default: ""
       t.string :color, null: false, default: "indigo"
       t.references :user, type: :uuid, null: false
+      t.boolean :default, default: false
 
       t.timestamps
     end
