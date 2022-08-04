@@ -1,0 +1,32 @@
+<div class="d-flex">
+  <h1>Мои папки</h1>
+</div>
+
+<div class="row row-cards mt-4" id="folders">
+  <% @folders.each do |folder| %>
+    <div class="col-md-6 col-xl-3">
+      <div class="card card-link" id="<%= dom_id folder %>">
+        <%= content_tag :div, nil, class: "card-status-top bg-#{folder.color}" %>
+
+        <div class="card-body text-center">
+          <div class="mb-3">
+            <%= content_tag :span, class: "avatar avatar-sm bg-#{folder.color}" do %>
+              <%= folder.name.first.capitalize %>
+            <% end %>
+          </div>
+
+          <div class="card-title mb-1">
+            <%= folder.name %>
+          </div>
+
+          <div class="text-muted">
+            <%= pluralize(folder.notes.size, "Записи", locale: :ru) %>
+          </div>
+        </div>
+
+        <%= link_to "Перейти", folder_path(folder), class: "card-btn" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

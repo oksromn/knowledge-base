@@ -24,8 +24,9 @@
   color: black;
 }
 
-.form-control:focus {
+.form-control:focus,
+.form-select:focus {
   outline: none;
   box-shadow: none;
-  border-color: #206bc4;
+  border-color: #1e293b;
 }

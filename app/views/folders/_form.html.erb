@@ -1,0 +1,32 @@
+<%= form_with model: folder, html: { class: "card mt-4" } do |form| %>
+  <%= content_tag :div, nil, class: "card-status-top bg-#{folder.color}" %>
+  <div class="card-body">
+    <% if folder.errors.any? %>
+      <div style="color: red">
+        <ul>
+          <% folder.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name, "Название папки", class: "form-label" %>
+      <%= form.text_field :name, placeholder: "Введите название", class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :color, "Выберите цвет", class: "form-label" %>
+      <%= render "folders/color_buttons", form: form %>
+    </div>
+  </div>
+
+
+  <div class="card-footer text-end">
+    <div class="d-flex justify-content-between">
+      <%= link_to "Назад", folders_path, class: "btn btn-link" %>
+      <%= form.submit "Применить", class: "btn btn-primary ms-auto" %>
+    </div>
+  </div>
+<% end %>

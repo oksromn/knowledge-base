@@ -1,11 +1,12 @@
 <div class="card" id="<%= dom_id note %>">
+  <%= content_tag :div, nil, class: "card-status-top bg-#{note.folder.color}" %>
+
   <div class="card-header">
     <h3 class="card-title">
       <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
     </h3>
   </div>
 
-  <div class="card-status-top bg-primary"></div>
   <div class="card-body">
     <%= note.content %>
   </div>
@@ -13,9 +14,9 @@
   <div class="card-footer">
     <% note.tag_list.each do |tag| %>
       <%= link_to notes_path(tagged: tag) do %>
-        <span class="badge rounded-pill bg-primary">
+        <%= content_tag :span, class: "badge rounded-pill bg-#{note.folder.color}" do %>
           <%= tag %>
-        </span>
+        <% end %>
       <% end %>
     <% end %>
   </div>

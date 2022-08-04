@@ -1,24 +1,38 @@
 <div class="d-flex justify-content-between">
-  <h1>Мои записи</h1>
+  <div class="folder-header">
+    <%= content_tag :div, class: "avatar text-white bg-#{@folder.color}" do %>
+      <%= @folder.name.first.capitalize %>
+    <% end %>
+
+    <h1><%= @folder.name.capitalize %></h1>
+
+    <ul class="list-inline mb-0 ms-4">
+      <li class="list-inline-item">
+        <%= link_to edit_folder_path, class: "text-dark" do %>
+          <i class="bi bi-pen icon-sm"></i>
+        <% end %>
+      </li>
+
+      <li class="list-inline-item ms-3">
+        <%= button_to folder_path(@folder), method: :delete, class: "btn-link text-dark" do %>
+          <i class="bi bi-x-lg icon-sm"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
   <div class="col-4">
-    <%= render partial: "search_form" %>
+    <%= render partial: "notes/search_form" %>
   </div>
 </div>
 
-<% if @notes.present? %>
+
+<% if @folder.notes.present? %>
   <div class="row row-cards mt-4" id="notes">
-    <% @notes.each do |note| %>
+    <% @folder.notes.each do |note| %>
       <div class="col-6">
         <div class="card card-link" id="<%= dom_id note %>">
-          <%= content_tag :div, nil, class: "card-status-start bg-#{note.folder.color}" %>
-
-          <%= content_tag :div, class: "ribbon ribbon-top bg-#{note.folder.color}" do %>
-            <%= link_to folder_path(note.folder), class: "text-decoration-none" do %>
-              <%= content_tag :span, class: "avatar avatar-sm bg-#{note.folder.color}" do %>
-                <%= note.folder.name.first.capitalize %>
-              <% end %>
-            <% end %>
-          <% end %>
+          <%= content_tag :div, nil, class: "card-status-start bg-#{@folder.color}" %>
 
           <div class="card-header">
             <h3 class="card-title">
@@ -33,14 +47,13 @@
           <div class="card-footer border-0 bg-white">
             <% note.tag_list.each do |tag| %>
               <%= link_to notes_path(tagged: tag) do %>
-                <%= content_tag :span, class: "badge rounded-pill bg-#{note.folder.color}" do %>
+                <%= content_tag :span, class: "badge rounded-pill bg-#{@folder.color}" do %>
                   <%= tag %>
                 <% end %>
               <% end %>
             <% end %>
           </div>
         </div>
-
       </div>
     <% end %>
   </div>
@@ -56,9 +69,8 @@
       </p>
 
       <div class="empty-action">
-        <%= link_to "Создать новую запись", new_note_path, class: "btn btn-dark" %>
+        <%= link_to "Создать новую запись", new_note_path, class: "btn btn-#{@folder.color}" %>
       </div>
     </div>
   </div>
 <% end %>
-
