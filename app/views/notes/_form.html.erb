@@ -28,7 +28,7 @@
 
     <div class="mb-3">
       <%= form.label :folder_ids, "Папка", class: "form-label" %>
-      <%= form.select :folder_ids, options_from_collection_for_select(current_user.folders, :id, :name), {}, { class: "form-control" } %>
+      <%= form.select :folder_ids, options_from_collection_for_select(current_user.folders, :id, :name), {}, { class: "form-select" } %>
     </div>
   </div>
 

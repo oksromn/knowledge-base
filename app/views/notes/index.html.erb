@@ -5,32 +5,51 @@
   </div>
 </div>
 
-<div class="row row-cards mt-4" id="notes">
-  <% @notes.each do |note| %>
-    <div class="col-6">
-      <div class="card card-link-pop" id="<%= dom_id note %>">
-        <div class="card-header">
-          <h3 class="card-title">
-            <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
-          </h3>
-        </div>
+<% if @notes.present? %>
+  <div class="row row-cards mt-4" id="notes">
+    <% @notes.each do |note| %>
+      <div class="col-6">
+        <div class="card card-link-pop" id="<%= dom_id note %>">
+          <div class="card-header">
+            <h3 class="card-title">
+              <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
+            </h3>
+          </div>
 
-        <div class="card-status-start bg-primary"></div>
-        <div class="card-body">
-          <%= note.content.to_plain_text.truncate(70) %>
-        </div>
+          <div class="card-status-start bg-primary"></div>
+          <div class="card-body">
+            <%= note.content.to_plain_text.truncate(70) %>
+          </div>
 
-        <div class="card-footer border-0 bg-white">
-          <% note.tag_list.each do |tag| %>
-            <%= link_to notes_path(tagged: tag) do %>
+          <div class="card-footer border-0 bg-white">
+            <% note.tag_list.each do |tag| %>
+              <%= link_to notes_path(tagged: tag) do %>
         <span class="badge rounded-pill bg-primary">
           <%= tag %>
         </span>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
+
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="container-tight py-4">
+    <div class="empty">
+      <div class="empty-header">
+        <i class="bi bi-card-heading"></i>
       </div>
 
+      <p class="empty-subtitle text-muted">
+        Здесь еще нет записей
+      </p>
+
+      <div class="empty-action">
+        <%= link_to "Создать новую запись", new_note_path, class: "btn btn-dark" %>
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
+

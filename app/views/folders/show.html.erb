@@ -5,54 +5,72 @@
     <% end %>
 
     <h1><%= @folder.name.capitalize %></h1>
+
+    <ul class="list-inline mb-0 ms-4">
+      <li class="list-inline-item">
+        <%= link_to edit_folder_path, class: "text-dark" do %>
+          <i class="bi bi-pen icon"></i>
+        <% end %>
+      </li>
+
+      <li class="list-inline-item ms-3">
+        <%= button_to folder_path(@folder), method: :delete, class: "btn-link text-dark" do %>
+          <i class="bi bi-x-lg icon"></i>
+        <% end %>
+      </li>
+    </ul>
   </div>
-
-
-  <ul class="list-inline mb-0">
-    <li class="list-inline-item">
-      <%= link_to edit_folder_path, class: "text-dark" do %>
-        <i class="bi bi-pencil-square icon"></i>
-      <% end %>
-    </li>
-
-    <li class="list-inline-item ms-3">
-      <%= button_to folder_path(@folder), method: :delete, class: "btn-link text-dark" do %>
-        <i class="bi bi-x-square icon"></i>
-      <% end %>
-    </li>
-  </ul>
 
   <div class="col-4">
     <%= render partial: "notes/search_form" %>
   </div>
 </div>
 
-<div class="row row-cards mt-4" id="notes">
-  <% @folder.notes.each do |note| %>
-    <div class="col-6">
-      <div class="card card-link-pop" id="<%= dom_id note %>">
-        <%= content_tag :div, nil, class: "card-status-start bg-#{@folder.color}" %>
 
-        <div class="card-header">
-          <h3 class="card-title">
-            <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
-          </h3>
-        </div>
+<% if @folder.notes.present? %>
+  <div class="row row-cards mt-4" id="notes">
+    <% @folder.notes.each do |note| %>
+      <div class="col-6">
+        <div class="card card-link-pop" id="<%= dom_id note %>">
+          <%= content_tag :div, nil, class: "card-status-start bg-#{@folder.color}" %>
 
-        <div class="card-body">
-          <%= note.content.to_plain_text.truncate(70) %>
-        </div>
+          <div class="card-header">
+            <h3 class="card-title">
+              <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
+            </h3>
+          </div>
 
-        <div class="card-footer border-0 bg-white">
-          <% note.tag_list.each do |tag| %>
-            <%= link_to notes_path(tagged: tag) do %>
-              <%= content_tag :span, class: "badge rounded-pill bg-#{@folder.color}" do %>
-                <%= tag %>
+          <div class="card-body">
+            <%= note.content.to_plain_text.truncate(70) %>
+          </div>
+
+          <div class="card-footer border-0 bg-white">
+            <% note.tag_list.each do |tag| %>
+              <%= link_to notes_path(tagged: tag) do %>
+                <%= content_tag :span, class: "badge rounded-pill bg-#{@folder.color}" do %>
+                  <%= tag %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="container-tight py-4">
+    <div class="empty">
+      <div class="empty-header">
+        <i class="bi bi-card-heading"></i>
+      </div>
+
+      <p class="empty-subtitle text-muted">
+        Здесь еще нет записей
+      </p>
+
+      <div class="empty-action">
+        <%= link_to "Создать новую запись", new_note_path, class: "btn btn-#{@folder.color}" %>
+      </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
