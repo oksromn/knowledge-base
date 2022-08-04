@@ -1,5 +1,4 @@
 <div class="d-flex justify-content-between">
-
   <div class="folder-header">
     <%= content_tag :div, class: "avatar text-white bg-#{@folder.color}" do %>
       <%= @folder.name.first.capitalize %>
@@ -32,12 +31,14 @@
   <% @folder.notes.each do |note| %>
     <div class="col-6">
       <div class="card card-link-pop" id="<%= dom_id note %>">
+        <%= content_tag :div, nil, class: "card-status-start bg-#{@folder.color}" %>
+
         <div class="card-header">
           <h3 class="card-title">
             <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
           </h3>
         </div>
-        <%= content_tag :div, nil, class: "card-status-start bg-#{@folder.color}" %>
+
         <div class="card-body">
           <%= note.content.to_plain_text.truncate(70) %>
         </div>
