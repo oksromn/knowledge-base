@@ -10,13 +10,22 @@
     <% @notes.each do |note| %>
       <div class="col-6">
         <div class="card card-link-pop" id="<%= dom_id note %>">
+          <%= content_tag :div, nil, class: "card-status-start bg-#{note.folder.color}" %>
+
+          <%= content_tag :div, class: "ribbon ribbon-top bg-#{note.folder.color}" do %>
+            <%= link_to folder_path(note.folder), class: "text-decoration-none" do %>
+              <%= content_tag :span, class: "avatar avatar-sm bg-#{note.folder.color}" do %>
+                <%= note.folder.name.first.capitalize %>
+              <% end %>
+            <% end %>
+          <% end %>
+
           <div class="card-header">
             <h3 class="card-title">
               <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
             </h3>
           </div>
 
-          <div class="card-status-start bg-primary"></div>
           <div class="card-body">
             <%= note.content.to_plain_text.truncate(70) %>
           </div>
@@ -24,9 +33,9 @@
           <div class="card-footer border-0 bg-white">
             <% note.tag_list.each do |tag| %>
               <%= link_to notes_path(tagged: tag) do %>
-        <span class="badge rounded-pill bg-primary">
-          <%= tag %>
-        </span>
+                <span class="badge rounded-pill bg-primary">
+                  <%= tag %>
+                </span>
               <% end %>
             <% end %>
           </div>

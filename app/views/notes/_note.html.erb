@@ -1,11 +1,12 @@
 <div class="card" id="<%= dom_id note %>">
+  <%= content_tag :div, nil, class: "card-status-top bg-#{note.folder.color}" %>
+
   <div class="card-header">
     <h3 class="card-title">
       <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
     </h3>
   </div>
 
-  <div class="card-status-top bg-primary"></div>
   <div class="card-body">
     <%= note.content %>
   </div>
