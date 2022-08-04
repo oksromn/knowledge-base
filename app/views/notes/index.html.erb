@@ -9,7 +9,7 @@
   <div class="row row-cards mt-4" id="notes">
     <% @notes.each do |note| %>
       <div class="col-6">
-        <div class="card card-link-pop" id="<%= dom_id note %>">
+        <div class="card card-link" id="<%= dom_id note %>">
           <%= content_tag :div, nil, class: "card-status-start bg-#{note.folder.color}" %>
 
           <%= content_tag :div, class: "ribbon ribbon-top bg-#{note.folder.color}" do %>

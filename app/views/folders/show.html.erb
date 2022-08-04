@@ -31,7 +31,7 @@
   <div class="row row-cards mt-4" id="notes">
     <% @folder.notes.each do |note| %>
       <div class="col-6">
-        <div class="card card-link-pop" id="<%= dom_id note %>">
+        <div class="card card-link" id="<%= dom_id note %>">
           <%= content_tag :div, nil, class: "card-status-start bg-#{@folder.color}" %>
 
           <div class="card-header">

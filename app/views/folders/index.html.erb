@@ -5,7 +5,7 @@
 <div class="row row-cards mt-4" id="folders">
   <% @folders.each do |folder| %>
     <div class="col-md-6 col-xl-3">
-      <div class="card card-link-pop" id="<%= dom_id folder %>">
+      <div class="card card-link" id="<%= dom_id folder %>">
         <%= content_tag :div, nil, class: "card-status-top bg-#{folder.color}" %>
 
         <div class="card-body text-center">
