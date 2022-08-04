@@ -20,10 +20,13 @@
             <% end %>
           <% end %>
 
-          <div class="card-header">
+          <div class="card-header justify-content-between">
             <h3 class="card-title">
               <%= link_to note.title, note_path(note), class: "text-decoration-none" %>
             </h3>
+            <small class="text-muted me-4">
+              <%= time_ago_in_words(note.created_at) %>
+            </small>
           </div>
 
           <div class="card-body">
@@ -40,7 +43,6 @@
             <% end %>
           </div>
         </div>
-
       </div>
     <% end %>
   </div>
@@ -51,9 +53,7 @@
         <i class="bi bi-card-heading"></i>
       </div>
 
-      <p class="empty-subtitle text-muted">
-        Здесь еще нет записей
-      </p>
+      <p class="empty-subtitle text-muted">Здесь еще нет записей</p>
 
       <div class="empty-action">
         <%= link_to "Создать новую запись", new_note_path, class: "btn btn-dark" %>
