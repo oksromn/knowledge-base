@@ -10,6 +10,7 @@ user = User.create(email: "test@test.com", password: "123123", name: "Тесто
 user.notes.create(
   title: "PCI Express",
   tag_list: "шина, передача данных",
+  folder_id: user.folders.first.id,
   content:
     "<div>" \
     "В отличие от стандарта PCI, использовавшего для передачи данных общую шину с подключением параллельно" \
