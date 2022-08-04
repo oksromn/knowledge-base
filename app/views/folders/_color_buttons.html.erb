@@ -1,0 +1,10 @@
+<div class="row g-2">
+  <% Folder::COLORS.each do |color| %>
+    <div class="col-auto">
+      <label class="form-colorinput">
+        <%= form.radio_button :color, color, class: "form-colorinput-input" %>
+        <%= content_tag :span, "", class: "form-colorinput-color bg-#{color}" %>
+      </label>
+    </div>
+  <% end %>
+</div>
