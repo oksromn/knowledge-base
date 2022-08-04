@@ -23,3 +23,9 @@
   @extend .alert-danger;
   color: black;
 }
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #206bc4;
+}
