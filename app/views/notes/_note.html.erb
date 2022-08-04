@@ -14,9 +14,9 @@
   <div class="card-footer">
     <% note.tag_list.each do |tag| %>
       <%= link_to notes_path(tagged: tag) do %>
-        <span class="badge rounded-pill bg-primary">
+        <%= content_tag :span, class: "badge rounded-pill bg-#{note.folder.color}" do %>
           <%= tag %>
-        </span>
+        <% end %>
       <% end %>
     <% end %>
   </div>
